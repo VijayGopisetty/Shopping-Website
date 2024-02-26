@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -20,7 +21,7 @@ public class PortalUserController {
     public UserSignUpDTO signup(@RequestBody UserSignUpDTO userSignUpDTO){
         String url="http://localhost:8083/db/user/add";
         HttpHeaders headers=new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<UserSignUpDTO> entity=new HttpEntity<UserSignUpDTO>(userSignUpDTO,headers);
         RestTemplate restTemplate=new RestTemplate();
         return restTemplate.exchange(url,HttpMethod.POST,entity, UserSignUpDTO.class).getBody();
