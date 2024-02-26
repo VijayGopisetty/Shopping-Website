@@ -1,7 +1,6 @@
 package com.shopping.database.api.Database.API.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -12,6 +11,9 @@ import java.util.UUID;
 @Setter
 @ToString
 public class CartVsProduct {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    UUID id;
     UUID cartId;
     UUID productId;
 }
